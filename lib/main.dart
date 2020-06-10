@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_theme_sage/model/theme_model.dart';
-import 'package:flutter_theme_sage/theme_selection_page.dart';
+import 'file:///C:/Users/Alperen/IdeaProjects/flutter_theme_usage/lib/screen/theme_selection_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Provider.of<MyThemeModel>(context).getThemeData,title: 'Theme App',home: ThemeSelectionPage(),debugShowCheckedModeBanner: false,
+      theme: Provider.of<MyThemeModel>(context).getThemeData,
+      title: 'Theme App',
+      home: ThemeSelectionPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
