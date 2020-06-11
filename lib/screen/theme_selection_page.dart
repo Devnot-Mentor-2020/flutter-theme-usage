@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_theme_sage/model/enum/sharedpref_keys.dart';
 import 'package:flutter_theme_sage/model/theme_model.dart';
+import 'package:flutter_theme_sage/preferences/shared_pref_helper.dart';
+import 'package:flutter_theme_sage/preferences/shared_preferences_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:day_night_switch/day_night_switch.dart';
 import '../design/sleep_theme.dart';
@@ -11,7 +14,6 @@ class ThemeSelectionPage extends StatefulWidget {
 
 class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
   var _isMorning = true;
-
   @override
   Widget build(BuildContext context) {
     final myThemeModel = Provider.of<MyThemeModel>(context);
@@ -20,9 +22,16 @@ class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
       appBar: AppBar(title: Text("Theme Selector"),),
       body:Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            buildDayNightSwitch(myThemeModel)
+            buildDayNightSwitch(myThemeModel),
+            RaisedButton(
+              child: Text("shared pppref"),
+              onPressed: (){
+                print(SharedPrefHelper.prefInstance.getBool(SharedPrefKeys.ISSLEEP));
+                //print(SharedPrefHelperSecond.getInstance().checkContains(SharedPrefKeys.ISSLEEP));
+              },
+            ),
           ],
         ),
       )
@@ -44,5 +53,7 @@ class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
     (value)
         ? myThemeModel.setThemeData(morningTheme)
         : myThemeModel.setThemeData(sleepTheme);
+    SharedPrefHelper.prefInstance.setBool(SharedPrefKeys.ISSLEEP, value);
+    //SharedPrefHelperSecond.getInstance().setBool(SharedPrefKeys.ISSLEEP, value);
   }
 }
