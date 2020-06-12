@@ -4,4 +4,4 @@ A new Flutter project.
 
 ## Getting Started
 
-![](https://giphy.com/gifs/LMEA7Cxi0bUJboH8um)
+![](https://media.giphy.com/media/LMEA7Cxi0bUJboH8um/giphy.gif)
