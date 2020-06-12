@@ -14,6 +14,7 @@ class ThemeSelectionPage extends StatefulWidget {
 
 class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
   var _isMorning = true;
+
   @override
   Widget build(BuildContext context) {
     final myThemeModel = Provider.of<MyThemeModel>(context);
@@ -25,13 +26,6 @@ class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             buildDayNightSwitch(myThemeModel),
-            RaisedButton(
-              child: Text("shared pppref"),
-              onPressed: (){
-                print(SharedPrefHelper.prefInstance.getBool(SharedPrefKeys.ISSLEEP));
-                //print(SharedPrefHelperSecond.getInstance().checkContains(SharedPrefKeys.ISSLEEP));
-              },
-            ),
           ],
         ),
       )
@@ -53,7 +47,7 @@ class _ThemeSelectionPageState extends State<ThemeSelectionPage> {
     (value)
         ? myThemeModel.setThemeData(morningTheme)
         : myThemeModel.setThemeData(sleepTheme);
-    SharedPrefHelper.prefInstance.setBool(SharedPrefKeys.ISSLEEP, value);
+    SharedPrefHelper.prefInstance.setBool(SharedPrefKeys.ISMORNING, value);
     //SharedPrefHelperSecond.getInstance().setBool(SharedPrefKeys.ISSLEEP, value);
   }
 }

@@ -1,3 +1,3 @@
 enum SharedPrefKeys{
- ISSLEEP
+ ISMORNING
 }

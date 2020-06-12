@@ -6,22 +6,23 @@ import 'package:flutter_theme_sage/preferences/shared_preferences_helper.dart';
 import 'file:///C:/Users/Alperen/IdeaProjects/flutter_theme_usage/lib/screen/theme_selection_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   //SharedPrefHelperSecond.getInstance();
-  SharedPrefHelper.createInstance();
-  //print(SharedPrefHelper.prefInstance.getBool(SharedPrefKeys.ISSLEEP));
-  /*var isSleepActive;
-  if(SharedPrefHelperSecond.getInstance().checkContains(SharedPrefKeys.ISSLEEP)){
-    isSleepActive = SharedPrefHelperSecond.getInstance().getBool(SharedPrefKeys.ISSLEEP);
+  await SharedPrefHelper.createInstance();
+  var isSleepActive;
+  if(SharedPrefHelper.prefInstance.checkContains(SharedPrefKeys.ISMORNING)){
+    isSleepActive = SharedPrefHelper.prefInstance.getBool(SharedPrefKeys.ISMORNING);
   }
+
   else{
     isSleepActive = false;
-  }*/
+  }
+
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          builder: (context) => MyThemeModel(false),
+          builder: (context) => MyThemeModel(isSleepActive),
         )
       ],
     child: MyApp(),

@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefHelper {
   static SharedPrefHelper  _prefsInstance = SharedPrefHelper._init();
-  SharedPreferences _sharedPreferences; // neden static değil?
+  SharedPreferences _sharedPreferences; //
 
   // SharedPrefHelper._privateConstructor();
   static SharedPrefHelper get prefInstance => _prefsInstance;
@@ -16,20 +16,12 @@ class SharedPrefHelper {
     });
   }
 
-  static createInstance() async {
+  static Future createInstance() async {
     if(prefInstance._sharedPreferences == null){
       prefInstance._sharedPreferences = await SharedPreferences.getInstance();
     }
     return;
   }
-
-  /*static SharedPrefHelper getInstance(){// lazy initiation!!
-    if(_prefsInstance == null){
-      _createInstance();
-      print("createdd");
-    }
-    return _prefsInstance;
-  }*/
 
   bool checkContains(SharedPrefKeys key){
     return _sharedPreferences.containsKey(key.toString());
